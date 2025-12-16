@@ -43,7 +43,7 @@ const loader = document.getElementById('loader');
 /* -------------------------
    Render helpers
    ------------------------- */
-function formatPrice(n) { return (typeof n === 'number') ? `${n.toFixed(2)} jd` : n; }
+function formatPrice(n) { return (typeof n === 'number') ? `₹ ${n.toFixed(2)}` : n; }
 
 function createItemCard(item) {
     const card = document.createElement('article');
@@ -227,4 +227,5 @@ async function loadMenu() {
 }
 
 // Run when page loads
+
 window.addEventListener("load", loadMenu);
