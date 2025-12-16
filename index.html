@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GoodVibesBurger —Demo Menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="header-inner">
+      <img src="https://i.ibb.co/Q3qmC5fJ/491579286-1173785311211146-552701522185034807-n.jpg" alt="Cafe Logo" class="brand-logo" height="100px">
+      <h1 class="title">Menu</h1>
+    </div>
+    <div class="header-inner">
+
+
+
+    </div>
+
+    <!-- mobile horizontal category bar -->
+    <nav class="mobile-cats" id="mobileCats" aria-label="Sections">
+      <div class="mobile-cats-inner" id="mobileCatsInner">
+        <!-- populated by JS -->
+      </div>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- left sidebar for wide screens -->
+    <aside class="sidebar" id="sidebar" aria-label="Food sections">
+      <h3 class="sidebar-title">Sections</h3>
+      <ul class="section-list" id="sectionList">
+        <!-- populated by JS -->
+      </ul>
+    </aside>
+
+    <main class="food-sections-container" id="mainContent" tabindex="-1">
+      <div class="loader" id="loader" aria-hidden="true">
+        <div class="shimmer-card"></div>
+        <div class="shimmer-card"></div>
+        <div class="shimmer-card"></div>
+      </div>
+      <!-- sections injected here -->
+    </main>
+
+  </div>
+ <div class="popup-content" id="popup">
+  <span class="close-btn" onclick="closePopup()">×</span>
+  <h3>👋 Hi!</h3>
+  <p>This is a live demo of your interactive menu.</p>
+  <p><strong>Want to see the magic?</strong><br>Tap the button below to change your prices instantly.</p>
+  <button onclick="openAdmin()" class="got-it-btn">Okay, let me try</button>
+</div>
+<div class="arrow-down">↓</div>
+
+<script>
+function openAdmin() {
+  window.location.href = "admin.html";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+  <script src="script.js" type="module"></script>
+</body>
+<hr>
+
+<footer style="text-align:center; padding:10px; font-size:13px; color:#999;">
+  <button id="admin-login-btn" onclick="openAdmin()">ADMIN</button>
+  <p href="https://www.instagram.com/goodvibesburger_/">@goodvibesburger_</p>
+  <p>0776330055</p>
+ 
+
+</footer>
+
+
+</html>
