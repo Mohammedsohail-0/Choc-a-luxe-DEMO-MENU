@@ -1,0 +1,412 @@
+/* IMPORT: 'Playfair Display' for Luxury Headers & 'Lato' for clean reading */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  /* --- THEME COLORS (Extracted from Choc-A-Luxe Images) --- */
+  
+  /* 1. Background: Pure Luxury Black */
+  --bg: #050505;
+  
+  /* 2. Secondary Background: Very Dark Grey for Cards */
+  --bg-soft: #111111;
+  
+  /* 3. Main Text: Off-White (Softer than pure white) */
+  --text: #F0F0F0;
+  
+  /* 4. Muted Text: Silver/Grey */
+  --muted: #A0A0A0;
+  
+  /* 5. Border: Metallic Gold Gradient (Solid fallback) */
+  --border: #D4AF37; 
+  
+  /* 6. Accent: Metallic Gold (The Choc-A-Luxe Brand Color) */
+  --accent: #D4AF37;
+  
+  /* 7. Price Color: White or Gold to match luxury vibe */
+  --price-color: #F8F8F8;
+  
+  /* Layout Variables */
+  --radius: 8px; /* Sharper corners look more expensive */
+  --shadow: 0 4px 25px rgba(212, 175, 55, 0.15); /* Soft Gold Glow */
+  --gap: 20px;
+  --max-width: 980px;
+  --mobile-cat-height: 54px;
+}
+
+/* base */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* Updated Font: Lato is clean and premium */
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY (Matching the "Luxury" Serif Style)
+   -------------------------------------------------- */
+h1, h2, h3, .section-title, .title {
+  /* Playfair Display looks like the "Classic Chocolates" header */
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: 1px; /* Spacing makes it look expensive */
+  color: var(--accent); /* Gold Headings */
+  text-transform: uppercase;
+  /* Simulating a Gold Gradient Text Effect */
+  background: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Fallback for browsers that don't support text clip */
+  color: #D4AF37; 
+  display: inline-block;
+}
+
+/* header */
+.main-header {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Subtle Gold Line */
+  background: rgba(5, 5, 5, 0.95); /* Glassy Black */
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 16px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.title { 
+  font-size: 26px; 
+  margin: 0; 
+  /* Reset text fill for the main title to keep it solid gold if preferred, or keep gradient */
+  -webkit-text-fill-color: initial; 
+  color: var(--accent);
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* Gold Dust Glow */
+}
+
+/* burger */
+.burger {
+  background: transparent;
+  border: 0;
+  font-size: 24px;
+  color: var(--accent);
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* mobile horizontal categories */
+.mobile-cats {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #222;
+  background: var(--bg);
+  overflow: hidden;
+}
+.mobile-cats-inner {
+  display: flex;
+  gap: 12px;
+  padding: 15px 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.cat-pill {
+  flex: 0 0 auto;
+  padding: 8px 20px;
+  border-radius: 4px; /* Boxy pills look more elegant */
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 400;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.cat-pill.active {
+  background: var(--accent); /* Gold Background */
+  color: #000; /* Black Text */
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); /* Gold Glow */
+}
+
+/* overall layout */
+.layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: var(--gap);
+  padding: 12px;
+}
+
+/* sidebar */
+.sidebar {
+  min-width: 180px;
+  width: 220px;
+  border-right: 1px solid #222;
+  padding: 20px;
+  background: var(--bg); 
+  position: sticky;
+  top: calc(var(--mobile-cat-height) + 48px);
+  height: calc(100vh - 72px);
+  overflow: auto;
+  display: none;
+}
+
+.section-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.section-list li {
+  padding: 10px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--muted); 
+  transition: all 0.3s;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-left: 2px solid transparent;
+}
+.section-list li:hover {
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+}
+.section-list li.active {
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), transparent);
+}
+
+/* main content */
+.food-sections-container {
+  flex: 1;
+  padding: 6px 6px 40px 6px;
+}
+
+/* section block */
+.menu-section { 
+  margin-bottom: 40px; 
+  padding-bottom: 20px;
+  position: relative;
+}
+/* A decorative gold line under section titles */
+.menu-section::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin-top: 10px;
+}
+
+.section-title { 
+  font-size: 24px; 
+  margin: 0 0 10px 0; 
+  font-weight: 700; 
+  color: var(--accent);
+  padding-left: 0; /* Removed left border, switched to underline style */
+  border-left: none;
+  background: none;
+  -webkit-text-fill-color: initial; 
+  color: #D4AF37;
+}
+
+/* grid cards */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 20px;
+}
+.menu-item-card {
+  background: var(--bg-soft); 
+  border-radius: 4px; /* Premium boxy look */
+  border: 1px solid #2a2a2a; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+/* The "Gold Border" hover effect */
+.menu-item-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5), 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Circular images match the logo style */
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  border: 2px solid var(--accent); /* Gold ring around image */
+}
+
+.item-body { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 4px; 
+  flex: 1; 
+}
+
+.item-name { 
+  font-size: 16px; 
+  font-weight: 700; 
+  margin: 0; 
+  color: #fff;
+  text-transform: uppercase; 
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+}
+
+.item-desc { 
+  font-size: 13px; 
+  color: var(--muted); 
+  margin: 0; 
+  line-height: 1.5;
+  font-weight: 300;
+  font-style: italic; /* Classy description style */
+}
+
+.item-footer { margin-top: 6px; }
+.item-price { 
+  color: var(--accent); /* Gold Price */
+  font-weight: 700; 
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* loader */
+.loader { display: flex; gap: 12px; padding: 18px; }
+.shimmer-card {
+  height: 120px; width: 100%; border-radius: 4px; 
+  background: linear-gradient(90deg, #111, #222, #111);
+  animation: shimmer 1.5s infinite linear;
+}
+@keyframes shimmer { from { background-position: -400px 0; } to { background-position: 400px 0; } }
+
+/* responsive rules */
+@media (max-width: 900px) {
+  .layout { display: block; padding: 0 10px 30px 10px; }
+  .sidebar { display: none; }
+  .mobile-cats { display: block; }
+  .menu-item-card { flex-direction: row; } /* Keep horizontal on mobile for premium list feel */
+  .item-image { width: 70px; height: 70px; }
+}
+
+@media (min-width: 901px) {
+  .mobile-cats { display: none; }
+  .sidebar { display: block; }
+  .layout { padding-top: 16px; }
+}
+
+/* --------------------------------------------------
+   OWNER POPUP (Luxury Edition)
+   -------------------------------------------------- */
+
+.owner-popup {
+  position: fixed;
+  bottom: 80px; 
+  right: 20px;
+  width: 280px;
+  z-index: 2000;
+  animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.popup-content {
+  position: relative;
+  background: #000; /* Pure Black */
+  border: 1px solid var(--accent);
+  padding: 25px;
+  border-radius: 4px;
+  /* Gold glow shadow */
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+  text-align: center;
+}
+
+.popup-content h3 { 
+  margin-top: 0; 
+  color: var(--accent); 
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.popup-content p { 
+  font-size: 13px; 
+  line-height: 1.6; 
+  color: #ccc; 
+  font-family: 'Lato', sans-serif;
+}
+
+.got-it-btn {
+  background: linear-gradient(135deg, #D4AF37, #C5A028); /* Gold Gradient Button */
+  color: #000;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 2px; /* Sharp corners */
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 0.2s;
+}
+.got-it-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  color: #000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+  color: var(--accent);
+  cursor: pointer;
+  opacity: 0.7;
+}
+.close-btn:hover { opacity: 1; }
+
+.arrow-down {
+  position: absolute;
+  bottom: -22px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; 
+  height: 0; 
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 22px solid var(--accent);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-login-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  color: #de0808;
+  cursor: pointer;
+  font-weight: bold;
+}
